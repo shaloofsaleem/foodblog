@@ -1,0 +1,94 @@
+{% extends 'base.html'%}
+{% load static  %}
+{% block content %}
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'cart/style.css' %}">
+
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+<body>
+	<div class="mystyle border border-success">
+
+<div class="container  ">
+    <span class="border">
+		{% for i in ci %}
+
+	<table id="cart" class="table table-striped">
+    				<thead>
+						<tr class="test border border-black">
+							<th style="width:50%">Product</th>
+							<th style="width:10%">Price</th>
+							<th style="width:8%">Quantity</th>
+							<th style="width:22%" class="text-center">Subtotal</th>
+							<th style="width:10%"></th>
+						</tr>
+					</thead>
+					<tbody >
+						<tr>
+							<td data-th="Product">
+								<div class="row">
+									<div class="col-sm-2 hidden-xs"><a href="{{i.prodt.get_url}}"><img src="{{i.prodt.img.url}}" alt="Price" class="img-responsive"/></a></div>
+									<p>Qty:{{i.quan}}</p>
+									<div class="col-sm-10">
+										<h4 class="nomargin">{{i.prodt.name}}</h4>
+										<p>ID: {{i.prodt.id}}</p>
+										
+									</div>
+								</div>
+							</td>
+							<td data-th="Price">Price: {{i.prodt.price}} x 1</td>
+							
+							<td data-th="Quantity">
+
+								<a href="{% url 'addcart' i.prodt.id %}" class="btn btn-info btn-lg">
+									<span class="glyphicon glyphicon-plus"></span> Plus 
+								  </a>
+								  <center>
+								  <h4>{{i.quan}}</h4>
+								  </center>
+
+								  <a href="{% url 'cart_decrement' i.prodt.id %}" class="btn btn-info btn-lg">
+									<span class="glyphicon glyphicon-minus"></span> Minus 
+								  </a>
+							</td>
+							<td data-th="Subtotal" class="text-center">${{i.total}}</td>
+							<td class="actions" data-th="">
+								<!-- <button class="btn btn-info btn-sm"><i class="fa fa-refresh"></i></button> -->
+								<button class="btn btn-danger btn-sm"><a href="{% url 'remove' i.prodt.id %}"><i class="fa fa-trash-o"></a></i></button>								
+							</td>
+						</tr>
+					</tbody>
+					<tfoot>
+						<tr class="visible-xs">
+							<td class="text-center"><strong>Total </strong></td>
+						</tr>
+						{% endfor %}
+						<tr>
+							<td><a href="#" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a></td>
+							<td colspan="2" class="hidden-xs"></td>
+							<td class="hidden-xs text-center"><strong>Total {{t}}</strong></td>
+							<td><a href="#" class="btn btn-success btn-block">Checkout <i class="fa fa-angle-right"></i></a></td>
+						</tr>
+					</tfoot>
+				</table>
+				
+            </span>        
+</div>
+</div>
+{% endblock %}
+</body>
+</html>

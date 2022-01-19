@@ -1,0 +1,46 @@
+
+{% load static %}
+<!DOCTYPE html>
+
+<html lang="">
+<!-- To declare your language - read more here: https://www.w3.org/International/questions/qa-html-language-declarations -->
+<head>
+<title>Spourmo</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link href="{% static 'home/layout/styles/layout.css' %}" rel="stylesheet" type="text/css" media="all">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body id="top" class="text-success"> 
+  <header id="header" class="hoc clear">
+    <div id="logo" class="fl_left mw-100"> 
+      <!-- ################################################################################################ -->
+      <h1><a href="/">SHOP</a></h1>
+     
+
+
+      <!-- ################################################################################################ -->
+    </div>
+    <div>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="active"><a href="/">Home</a></li>
+        <li><a href="{% url 'cartDetails' %}">Cart {{itc}}</a></li>
+        <li><a href="#">LogOut</a></li>
+        <li><a href="#">Login</a></li>
+        <li><a href="#">Register</a></li>
+      </ul>
+      
+    </div>
+   
+  </header>
+  
+  <!-- ################################################################################################ -->
+  <!-- ################################################################################################ -->
+  <!-- ################################################################################################ -->
+ 
+{% block content %}
+{% endblock %}
+</body>
+</html>
